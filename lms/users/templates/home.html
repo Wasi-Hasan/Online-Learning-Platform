@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programming LMS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+
+<style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: white;
+            color: #4b0082; /* Purple text */
+            font-family: "Oswald", sans-serif; !important
+          
+            line-height: 1.6;
+            font-size: 18px; /* Increased base font size */
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        nav {
+            background-color: #4c2a85; /* Dark purple background */
+            padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+            padding-top: 8px;
+        }
+        
+        nav .container {
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 15px;
+            padding-bottom: 20px;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav ul li {
+            display: inline;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 15px;
+            transition: all 0.3s ease-in-out;
+            border-radius: 5px;
+        }
+        
+        nav ul li a:hover {
+            background-color: #f3e8ff; /* Light purple on hover */
+            color: #4c2a85; /* Dark purple text color on hover */
+            transform: translateY(-5px); /* Slight upward movement */
+        }
+        
+        nav ul li a.active {
+            background-color: #f3e8ff; /* Active link color */
+            color: #4c2a85; /* Dark purple active text */
+        }
+        
+        @media screen and (max-width: 768px) {
+            nav .container {
+                flex-direction: column;
+                text-align: center;
+            }
+        
+            nav ul {
+                flex-direction: column;
+            }
+        
+            nav ul li a {
+                padding: 12px 20px;
+                font-size: 18px;
+            }
+        }
+        
+        section {
+            padding: 50px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .section-heading {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 30px; /* Larger section headings */
+            font-weight: bold;
+        }
+        .first-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .first-section img {
+            max-width: 50%;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .card {
+            background-color: #e5dbf9; /* Light purple */
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+            max-height: 180px; /* Restricts image height */
+            border-radius: 8px;
+            margin-bottom: 15px;
+            object-fit: contain; /* Ensures the image fits inside the available space */
+        }
+        .card p {
+            font-size: 18px; /* Adjust text size for better readability */
+        }
+        
+        .faq-question {
+            cursor: pointer;
+            font-size: 22px;
+            font-weight: bold;
+            margin: 0;
+            padding: 10px;
+            background-color: #6a0dad; /* Purple background */
+            color: white;
+            border-radius: 5px;
+        }
+    
+        .faq-answer {
+            display: none; /* Initially hide answers */
+            margin: 10px 0 0;
+            padding: 10px;
+            background-color: #e5dbf9; /* Light purple background */
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+        }
+    
+        .faq-item {
+            margin-bottom: 15px;
+        }
+        footer {
+            background-color: #4a148c;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+        footer p {
+            margin: 0;
+        }
+        .section-content img {
+            max-width: 150px;
+            border-radius: 10px;
+        }
+        p {
+            font-size: 20px; /* Larger paragraph text */
+        }
+        .faq-item h3 {
+            font-size: 22px; /* Larger FAQ question text */
+        }
+        .container {
+            padding: 20px;
+        }
+        
+        .section-heading {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .company-section {
+            margin-bottom: 40px;
+        }
+        
+        .company-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .company-logo {
+            width: 100px;
+            height: auto;
+        }
+        
+        .company-description {
+            flex: 1;
+        }
+        
+        .frameworks {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        
+        .card {
+            flex: 1;
+            text-align: center;
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card img {
+            max-width: 100%;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        .container {
+    padding: 20px;
+}
+
+.section-heading {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.company-section {
+    margin-bottom: 40px;
+}
+
+.company-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.company-logo {
+    flex: 0 0 30%;
+    max-width: 100%;
+    height: auto;
+}
+
+.company-description {
+    flex: 1;
+}
+
+.frameworks-heading {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.frameworks {
+    display: flex;
+    gap: 15px;
+    justify-content: space-around;
+}
+
+.card {
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    width: 30%;
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+.language-container {
+    background-color: #f8f9fa; /* Light grey for contrast */
+    padding: 30px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 1200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.language-heading {
+    font-family: 'Arial', sans-serif;
+    font-size: 26px;
+    color: #4b0082;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+}
+
+.language-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; /* Space between cards */
+    justify-items: center; /* Centers the cards */
+}
+
+.language-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 350px; /* Larger card size */
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.language-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.language-card img {
+    width: 100%; /* Fully utilizes the card width */
+    height: 180px; /* Maintains a consistent height */
+    object-fit: contain; /* Ensures the entire image is visible without cropping */
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.language-card p {
+    font-size: 16px; /* Slightly larger text */
+    color: #800080; /* Purple text */
+    line-height: 1.8;
+    margin: 10px 0;
+}
+
+.language-card strong {
+    color: #4b0082; /* Darker purple for emphasis */
+    font-weight: bold;
+}
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #4a148c;
+    padding: 15px 20px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #d1c4e9;
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+</style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Code Sphere</div>
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'blogs' %}">Blogs</a>
+            <a href="{% url 'courses' %}">Courses</a>
+            <a href="{% url 'lecture_list' %}">Lectures</a>
+            <a href="{% url 'profile' %}">Profile</a>
+            <a href="{% url 'contact_us' %}">Contact Us</a>
+        </div>
+    </div>
+    
+
+    <!-- First Section -->
+    <section class="first-section container">
+        <div>
+            <h1>CodeSphere Academy!!
+            </h1>
+            <p>Step into a world of endless possibilities with our Programming Learning Management System (LMS). Discover the best programming languages, tools, and techniques that will not only enhance your skills but also pave the way for your dream career in the tech industry. Start your journey with us and unlock your potential today!</p>
+        </div>
+        <img src="https://tse4.mm.bing.net/th?id=OIP.PTkMqXb_5RR1qdxwU2x8qQHaF7&pid=Api&P=0&h=220" alt="Programming Illustration">
+    </section>
+    <!-- Second Section -->
+    <section class="language-container">
+        <h2 class="language-heading">Popular Programming Languages</h2>
+        <div class="language-cards">
+            <div class="language-card">
+                <img src="https://mir-s3-cdn-cf.behance.net/project_modules/2800_opt_1/9d2e8896750899.5eb54f3381452.png" alt="Python">
+                <p><strong>Python:</strong> Perfect for artificial intelligence, machine learning, and data analysis.</p>
+            </div>
+            <div class="language-card">
+                <img src="https://wallpapercave.com/wp/wp7250277.jpg" alt="Java">
+                <p><strong>Java:</strong> A top choice for enterprise-level applications and Android development.</p>
+            </div>
+            <div class="language-card">
+                <img src="https://ih1.redbubble.net/image.316760221.5828/flat,800x800,075,f.jpg" alt="JavaScript">
+                <p><strong>JavaScript:</strong> The backbone of modern web development and interactive interfaces.</p>
+            </div>
+            <div class="language-card">
+                <img src="https://media.sketchfab.com/models/1b277fc32bbc451fa6f40e298996ba91/thumbnails/1c9c06b1fa3c4aaaa94a70bc7bfc3c7e/d369fbc48d5b479bb657791e4026ca34.jpeg" alt="C++">
+                <p><strong>C++:</strong> Ideal for game development, systems programming, and high-performance apps.</p>
+            </div>
+            <div class="language-card">
+                <img src="https://cdn3d.iconscout.com/3d/free/thumb/free-ruby-9294873-7578016.png" alt="Ruby">
+                <p><strong>Ruby:</strong> Focused on simplicity and productivity, especially for web development.</p>
+            </div>
+            <div class="language-card">
+                <img src="https://enggkatta.com/wp-content/uploads/2022/08/php-programming-language.jpg" alt="PHP">
+                <p><strong>PHP:</strong> Widely used for developing dynamic websites and server-side applications.</p>
+            </div>
+        </div>
+    </section>
+    <!-- Third Section -->
+    <section class="container">
+        <h2 class="section-heading">Popular Companies and Frameworks</h2>
+    
+        <!-- Subsection 1: Google -->
+        <div class="company-section">
+            <!-- First Sub-subsection -->
+            <div class="company-info">
+                <img src="https://ouch-cdn2.icons8.com/VGHyfDgzIiyEwg3RIll1nYupfj653vnEPRLr0AeoJ8g/rs:fit:456:456/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvODg2/LzRjNzU2YThjLTQx/MjgtNGZlZS04MDNl/LTAwMTM0YzEwOTMy/Ny5wbmc.png" alt="Google Logo" class="company-logo">
+                <div class="company-description">
+                    <h3>Google</h3>
+                    <p>
+                        Google is a global leader in technology, known for products like Search, Android, and YouTube. It focuses on innovations in AI, 
+                        machine learning, and web development. Popular frameworks like TensorFlow, Angular, and Flutter are widely used by Google 
+                        for cutting-edge development.
+                    </p>
+                </div>
+            </div>
+    
+            <!-- Frameworks Section -->
+            <h4 class="frameworks-heading">Frameworks</h4>
+            <div class="frameworks">
+                <div class="card">
+                    <img src="https://i.ytimg.com/vi/qTZMWB6Fw0g/maxresdefault.jpg" alt="TensorFlow">
+                    <p><strong>TensorFlow:</strong> A leading framework for AI and machine learning.</p>
+                </div>
+                <div class="card">
+                    <img src="https://wallpapers.com/images/hd/angular-logo-in-glittery-black-m51gr5vhap1khvl2.jpg" alt="Angular">
+                    <p><strong>Angular:</strong> A robust framework for building web applications.</p>
+                </div>
+                <div class="card">
+                    <img src="https://files.cults3d.com/uploaders/16462864/illustration-file/25653aba-95ab-407f-a197-d7e7dbc27396/Flutter-v2.png" alt="Flutter">
+                    <p><strong>Flutter:</strong> Ideal for cross-platform mobile development.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Subsection 2: Microsoft -->
+        <div class="company-section">
+            <!-- First Sub-subsection -->
+            <div class="company-info">
+                <img src="https://wallpaperaccess.com/full/5865635.jpg" alt="Microsoft Logo" class="company-logo">
+                <div class="company-description">
+                    <h3>Microsoft</h3>
+                    <p>
+                        Microsoft, a tech leader, is known for its products like Windows, Office, and Azure. It uses advanced frameworks like .NET 
+                        for enterprise applications, React Native for UI development, and Xamarin for mobile solutions.
+                    </p>
+                </div>
+            </div>
+    
+            <!-- Frameworks Section -->
+            <h4 class="frameworks-heading">Frameworks</h4>
+            <div class="frameworks">
+                <div class="card">
+                    <img src="https://softjourn.com/media/images/Articles/pros-and-cons-of-net-framework/Net-Frame.png" alt=".NET">
+                    <p><strong>.NET:</strong> A versatile framework for web and desktop applications.</p>
+                </div>
+                <div class="card">
+                    <img src="https://media.sketchfab.com/models/540ff21ac0f54a038df6f634c7cce726/thumbnails/c7aff9789ba54201b3e850a06a262ead/715945dc7bd24448ad681a9b311cda69.jpeg" alt="React Native">
+                    <p><strong>React Native:</strong> Enables cross-platform mobile app development.</p>
+                </div>
+                <div class="card">
+                    <img src="https://greenfinchwebsitestorage.blob.core.windows.net/media/2019/06/Xamarin-logo.png" alt="Xamarin">
+                    <p><strong>Xamarin:</strong> A powerful framework for mobile development.</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Subsection 3: Meta -->
+        <div class="company-section">
+            <!-- First Sub-subsection -->
+            <div class="company-info">
+                <img src="https://static.vecteezy.com/system/resources/previews/022/498/163/original/3d-render-facebook-logo-icon-with-new-notification-isolated-on-transparent-background-free-png.png" alt="Meta Logo" class="company-logo">
+                <div class="company-description">
+                    <h3>Meta (Facebook)</h3>
+                    <p>
+                        Meta, formerly Facebook, is a leader in social media and virtual reality. It uses frameworks like React.js for web interfaces, 
+                        PyTorch for machine learning, and GraphQL for efficient APIs, empowering its platforms like Instagram, WhatsApp, and Facebook.
+                    </p>
+                </div>
+            </div>
+    
+            <!-- Frameworks Section -->
+            <h4 class="frameworks-heading">Frameworks</h4>
+            <div class="frameworks">
+                <div class="card">
+                    <img src="https://wallpaperaccess.com/full/3949076.jpg" alt="React.js">
+                    <p><strong>React.js:</strong> A popular framework for building web UIs.</p>
+                </div>
+                <div class="card">
+                    <img src="https://149695847.v2.pressablecdn.com/wp-content/uploads/2020/02/Pytorch.png" alt="PyTorch">
+                    <p><strong>PyTorch:</strong> A framework for deep learning and AI research.</p>
+                </div>
+                <div class="card">
+                    <img src="https://davidwalsh.name/demo/graphql-intro/graphql.png" alt="GraphQL">
+                    <p><strong>GraphQL:</strong> A query language for efficient APIs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="container">
+        <h2 class="section-heading">What You Learn?</h2>
+        <p>Our platform offers an extensive range of programming courses tailored for both beginners and advanced learners. With the ability to upload video lectures, PDF resources, and detailed course descriptions, we provide a comprehensive learning experience. Whether you're looking to master in-demand programming languages, work on real-world projects, or stay updated with cutting-edge technologies, we have you covered. Explore web development, app creation, or data science with structured modules, interactive assignments, and flexible learning at your own pace. Empower yourself with the tools and resources needed to achieve your goals!
+        </p>
+    </section>  
+    <!-- Fourth Section -->
+    <section class="container">
+        <h2 class="section-heading">Frequently Asked Questions</h2>
+        <div class="faq">
+            <div class="faq-item">
+                <h3 class="faq-question">How do I start learning?</h3>
+                <p class="faq-answer">Sign up, explore courses, and begin your programming journey with us.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Are these resources free?</h3>
+                <p class="faq-answer">Yes! All foundational courses are free, with premium content available at affordable rates.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Can I learn multiple languages?</h3>
+                <p class="faq-answer">Absolutely! You can explore multiple languages and build a diverse skill set to excel in the tech industry.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">What programming languages should I start with?</h3>
+                <p class="faq-answer">We recommend starting with Python or JavaScript due to their beginner-friendly syntax and wide application.</p>
+            </div>
+            <div class="faq-item">
+                <h3 class="faq-question">Do I need any prior experience?</h3>
+                <p class="faq-answer">No prior experience is needed. Our beginner courses are tailored for absolute beginners.</p>
+            </div>
+        </div>
+    </section>
+    
+    <script>
+        // Select all FAQ questions
+        const questions = document.querySelectorAll('.faq-question');
+    
+        questions.forEach(question => {
+            question.addEventListener('click', () => {
+                // Toggle visibility of the associated answer
+                const answer = question.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Programming LMS. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

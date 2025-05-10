@@ -1,0 +1,27 @@
+Django==4.2.3  # Replace with the version you used
+djangorestframework==3.14.0  # If you used Django REST Framework (optional)
+sqlite3  # If SQLite is your database
+gunicorn==20.1.0  # If deploying on a web server
+whitenoise==6.5.0  # For serving static files in production
+psycopg2==2.9.6  # If switching to PostgreSQL later (optional)
+
+# For email functionality
+django-smtp-ssl==2.0.0
+
+# Frontend-related
+django-bootstrap-v5==1.1.3  # If Bootstrap was integrated
+
+# For handling file uploads
+django-storages==1.14.0  # For managing uploaded files (optional)
+
+# Security and debugging
+django-debug-toolbar==4.1.0  # For debugging during development
+
+# Development and testing tools
+pytest-django==4.5.2  # For testing Django applications
+coverage==7.2.7  # For measuring test coverage
+
+# Additional libraries for extended functionalities
+Pillow==10.0.0  # For image handling if used
+python-decouple==3.8  # For managing environment variables
+requests==2.31.0  # For handling API calls (optional)

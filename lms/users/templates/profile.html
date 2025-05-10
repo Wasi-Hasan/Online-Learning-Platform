@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    
+    <title>Profile</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: "Oswald", sans-serif !important;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        main {
+            flex: 1;
+        }
+        nav {
+            background-color: #4c2a85; /* Dark purple background */
+            padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+            padding-top: 8px;
+        }
+        
+        nav .container {
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 15px;
+            padding-bottom: 20px;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav ul li {
+            display: inline;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 15px;
+            transition: all 0.3s ease-in-out;
+            border-radius: 5px;
+        }
+        
+        nav ul li a:hover {
+            background-color: #f3e8ff; /* Light purple on hover */
+            color: #4c2a85; /* Dark purple text color on hover */
+            transform: translateY(-5px); /* Slight upward movement */
+        }
+        
+        nav ul li a.active {
+            background-color: #f3e8ff; /* Active link color */
+            color: #4c2a85; /* Dark purple active text */
+        }
+     
+        /* Header */
+        h1 {
+            color: #6a1b9a; /* Purple color */
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        /* Profile Container */
+        .profile-container {
+            max-width: 800px;
+            margin: 30px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Profile Text */
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Strong Text (Labels) */
+        strong {
+            color: #6a1b9a; /* Purple */
+        }
+
+        /* Logout Button */
+        .logout-btn {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #6a1b9a; /* Purple */
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: #9c4dcc; /* Lighter purple */
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #4a148c;
+            padding: 15px 20px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #d1c4e9;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #4a148c; /* Same as navbar */
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            height: 15px;
+
+        }
+        footer p {
+            margin: 0;
+            color: #f3e8ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Code Sphere</div>
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'blogs' %}">Blogs</a>
+            <a href="{% url 'courses' %}">Courses</a>
+            <a href="{% url 'lecture_list' %}">Lectures</a>
+            <a href="{% url 'profile' %}">Profile</a>
+            <a href="{% url 'contact_us' %}">Contact Us</a>
+        </div>
+    </div>
+
+    <main>
+        <h1>Profile</h1>
+        <div class="profile-container">
+            <p><strong>Username:</strong> {{ username }}</p>
+            <p><strong>Email:</strong> {{ email }}</p>
+            <!-- Do not display password. Instead, you can offer a form for password change if needed -->
+            <p><strong>Password:</strong> ******** (This is hidden for security reasons)</p>
+
+            <!-- Logout Button -->
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="logout-btn">Logout</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Code Sphere. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

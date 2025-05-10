@@ -1,0 +1,27 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "vercel_wsgi_handler.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/static/(.*)",
+        "headers": {
+          "cache-control": "public,max-age=31536000,immutable"
+        },
+        "dest": "/static/$1"
+      },
+      {
+        "src": "/media/(.*)",
+        "dest": "/media/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "vercel_wsgi_handler.py"
+      }
+    ]
+  }
+  

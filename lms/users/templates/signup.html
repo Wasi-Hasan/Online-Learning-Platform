@@ -1,0 +1,121 @@
+{% block content %}
+<style>
+  body {
+      background-color: #f3e8ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+  }
+
+  h2 {
+      text-align: center;
+      color: #4c2a85;
+      font-size: 2rem; /* Reduced header font size */
+      margin-bottom: 20px; /* Slightly reduced margin */
+      animation: fadeIn 2s ease-in-out;
+  }
+
+  form {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 25px; /* Reduced padding */
+      width: 400px; /* Reduced form width */
+      animation: slideUp 1.5s ease-in-out;
+  }
+
+  form div {
+      margin-bottom: 15px; /* Reduced space between fields */
+  }
+
+  label {
+      display: block;
+      color: #4c2a85;
+      font-weight: bold;
+      margin-bottom: 5px; /* Slightly reduced margin for label */
+      font-size: 1.2rem; /* Reduced font size for labels */
+  }
+
+  input {
+      width: 100%;
+      padding: 8px; /* Reduced padding */
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem; /* Slightly reduced font size for input fields */
+      color: #4c2a85;
+  }
+
+  button {
+      background-color: #7d4fc4;
+      color: white;
+      border: none;
+      padding: 8px 12px; /* Reduced padding */
+      font-size: 1rem; /* Reduced font size for button */
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+
+  button:hover {
+      transform: scale(1.05);
+      background-color: #63319f;
+  }
+
+  p {
+      text-align: center;
+      margin-top: 15px; /* Reduced margin top */
+      font-size: 1rem; /* Slightly reduced font size for paragraph */
+  }
+
+  a {
+      color: #4c2a85;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem; /* Reduced font size for link */
+      transition: color 0.3s ease;
+  }
+
+  a:hover {
+      color: #7d4fc4;
+  }
+
+  @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+      0% { transform: translateY(50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+  }
+</style>
+
+<div>
+    <h2>Sign Up</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="id_username">Username:</label>
+            {{ form.username }}
+        </div>
+        <div>
+            <label for="id_email">Email:</label>
+            {{ form.email }}
+        </div>
+        <div>
+            <label for="id_password1">Password:</label>
+            {{ form.password1 }}
+        </div>
+        <div>
+            <label for="id_password2">Confirm Password:</label>
+            {{ form.password2 }}
+        </div>
+        <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+</div>
+{% endblock %}

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <title>Courses</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Oswald", sans-serif;
+            background-color: #fff; /* White background */
+            color: #4a148c;
+            margin: 0;
+            height: 100%;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            background-color: #4c2a85;
+            padding: 10px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin: 0 20px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar ul li a:hover {
+            color: #f3e5f5;
+        }
+
+        /* First section */
+        .section-one {
+            display: flex;
+            justify-content: space-between;
+            padding: 50px 20px;
+            align-items: center;
+            background-color: #fff;
+        }
+
+        .section-one .text {
+            flex: 1;
+            padding: 20px;
+            font-size: 18px;
+        }
+
+        .section-one .image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .section-one .image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Second section (Courses) */
+        .section-two {
+            padding: 50px 20px;
+            background-color: #fff;
+        }
+
+        .section-two h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #4a148c;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #4a148c;
+            color: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 30%; /* Adjust to have three cards per row */
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        .card .details {
+            margin-top: 10px;
+        }
+
+        .pdf-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: bold;
+            color: white;
+            background-color: #7b1fa2;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .pdf-button:hover {
+            background-color: #6a1b9a;
+            cursor: pointer;
+        }
+        footer {
+            background-color:#4a148c;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+        footer p {
+            margin: 0;
+        }
+        
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar .container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .navbar ul li {
+                width: 100%;
+                text-align: left;
+                margin: 5px 0;
+            }
+
+            .section-one {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .section-one .image {
+                margin-top: 20px;
+            }
+
+            .card {
+                width: 100%; /* Stack cards on smaller screens */
+            }
+        }
+        /* Navbar Styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #4a148c;
+            padding: 15px 20px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #d1c4e9;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <div class="logo">Code Sphere</div>
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'blogs' %}">Blogs</a>
+            <a href="{% url 'courses' %}">Courses</a>
+            <a href="{% url 'lecture_list' %}">Lectures</a>
+            <a href="{% url 'profile' %}">Profile</a>
+            <a href="{% url 'contact_us' %}">Contact Us</a>
+        </div>
+    </div>
+
+    <!-- First Section: Text and Image -->
+    <div class="section-one">
+        <div class="text">
+            <h2>Unlock the Power of Code: Transform Ideas into Reality</h2>
+            <p>Programming is a critical skill in today's world. Whether you're developing software, building interactive websites, analyzing data, or solving complex mathematical problems, programming has become a fundamental part of various industries. With the rapid advancements in technology.
+
+                </p>
+        </div>
+        <div class="image">
+            <img src="https://elements-cover-images-0.imgix.net/f8281122-dc2f-44ed-813e-8fb5fab0a416?auto=compress&crop=edges&fit=crop&fm=jpeg&h=630&w=1200&s=4ab69226a87de6a73d846ac9756ddc3a" alt="Programming Image">
+        </div>
+    </div>
+
+    <!-- Second Section: Courses -->
+    <div class="section-two">
+        <h1>All Courses</h1>
+        <div class="card-container">
+            {% for course in courses %}
+            <div class="card">
+                <h3>{{ course.name }}</h3>
+                <div class="details">
+                    {% if course.pdf %}
+                    <p>
+                        <a class="pdf-button" href="{{ course.pdf.url }}" target="_blank">Download PDF</a>
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Programming LMS. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

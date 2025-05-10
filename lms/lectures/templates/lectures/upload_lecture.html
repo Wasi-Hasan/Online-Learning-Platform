@@ -1,0 +1,17 @@
+<!-- lectures/templates/lectures/upload_lecture.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload a New Lecture</title>
+</head>
+<body>
+    <h1>Upload a New Lecture</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload Lecture</button>
+    </form>
+</body>
+</html>

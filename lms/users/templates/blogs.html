@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+    <style>
+        body {
+            background-color: #f3e8ff;
+            font-family: "Oswald", sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 14px; /* Reduced font size */
+        }
+
+        
+        
+     
+
+
+        h1, h2 {
+            text-align: center;
+            color: #4c2a85;
+            font-size: 2rem; /* Smaller font size */
+            margin-top: 30px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .content-container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+
+        .card {
+            width: 30%;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transform: scale(1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover; /* Ensures image fills the card without distortion */
+            border-bottom: 2px solid #4c2a85;
+        }
+
+        .card-content {
+            padding: 15px;
+            text-align: center;
+        }
+
+        .card-content h3 {
+            font-size: 1.2rem; /* Smaller font size */
+            color: #4c2a85;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            font-size: 0.9rem; /* Smaller font size */
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .company-info .card {
+            width: 45%;
+            margin: 10px;
+        }
+        .content-container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #4c2a85;
+            font-size: 2.5rem;
+            margin-top: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .content-container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        .cards .card {
+            width: 30%;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cards .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover; /* Ensures the image covers the entire card area */
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            color: #4c2a85;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            font-size: 1rem;
+            color: #4c2a85;
+        }
+
+        .section-title {
+            color: #4c2a85;
+            font-size: 2rem;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .hackathon-info {
+            font-size: 1rem;
+            text-align: center;
+            color: #4c2a85;
+        }        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        nav {
+            background-color: #4c2a85; /* Dark purple background */
+            padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+            padding-top: 8px;
+        }
+        
+        nav .container {
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 15px;
+            padding-bottom: 20px;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 30px;
+        }
+        
+        nav ul li {
+            display: inline;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            padding: 10px 15px;
+            transition: all 0.3s ease-in-out;
+            border-radius: 5px;
+        }
+        
+        nav ul li a:hover {
+            background-color: #f3e8ff; /* Light purple on hover */
+            color: #4c2a85; /* Dark purple text color on hover */
+            transform: translateY(-5px); /* Slight upward movement */
+        }
+        
+        nav ul li a.active {
+            background-color: #f3e8ff; /* Active link color */
+            color: #4c2a85; /* Dark purple active text */
+        }
+        footer {
+            background-color: #4a148c;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 30px;
+        }
+        footer p {
+            margin: 0;
+        }
+        /* Navbar Styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #4a148c;
+            padding: 15px 20px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #d1c4e9;
+        }
+
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+     
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Code Sphere</div>
+        <div class="nav-links">
+            <a href="{% url 'home' %}">Home</a>
+            <a href="{% url 'blogs' %}">Blogs</a>
+            <a href="{% url 'courses' %}">Courses</a>
+            <a href="{% url 'lecture_list' %}">Lectures</a>
+            <a href="{% url 'profile' %}">Profile</a>
+            <a href="{% url 'contact_us' %}">Contact Us</a>
+        </div>
+    </div>
+ 
+    <div class="content-container">
+        <!-- Section for Famous Hackathons -->
+        <div class="section">
+            <h2 class="section-title">Famous Hackathons for Programming Enthusiasts</h2>
+            <div class="hackathon-info">
+               
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <img src="https://wallpapercave.com/wp/wp7250087.jpg" alt="Java Hackathon">
+                    <div class="card-content">
+                        <h3>Java Hackathon</h3>
+                        <p>This event brings together Java developers to create innovative applications using Java. Participants often focus on building high-performance, scalable applications that can solve real-world problems. The event emphasizes teamwork, coding under time constraints, and creative problem solving.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://static.vecteezy.com/system/resources/previews/012/697/298/non_2x/3d-javascript-logo-design-free-png.png" alt="JavaScript Hackathon">
+                    <div class="card-content">
+                        <h3>JavaScript Hackathon</h3>
+                        <p>JavaScript hackathons challenge developers to build dynamic web applications, often using popular frameworks like React, Angular, or Vue.js. These hackathons focus on improving web development skills, creating interactive UI components, and pushing the limits of front-end development.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2023/04/raspberry-lanza-editor-codigo-aprender-python-lenguaje-ia-3008158.jpg" alt="Python Hackathon">
+                    <div class="card-content">
+                        <h3>Python Hackathon</h3>
+                        <p>Python hackathons provide developers with the opportunity to work on AI, machine learning, data analysis, and automation projects. This hackathon often attracts people from diverse domains such as data science, artificial intelligence, and backend development, all using Python as their primary tool.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-container">
+        <!-- Section for Famous CEOs -->
+        <div class="section">
+            <h2>Famous CEOs of Leading Tech Companies</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <img src="https://therecenttimes.com/wp-content/uploads/2024/11/Elon-Musk-5.webp" alt="Elon Musk">
+                    <div class="card-content">
+                        <h3>Elon Musk</h3>
+                        <p>CEO of SpaceX and Tesla, known for his innovative ventures in space and electric vehicles.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://wallpaperaccess.com/full/4225705.jpg" alt="Sundar Pichai">
+                    <div class="card-content">
+                        <h3>Sundar Pichai</h3>
+                        <p>CEO of Google, overseeing the development of cutting-edge technologies.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://i.insider.com/5b9944318ea82f1c008b5fc3?width=1729" alt="Tim Cook">
+                    <div class="card-content">
+                        <h3>Tim Cook</h3>
+                        <p>CEO of Apple, leading the company to new heights with groundbreaking products.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://i.insider.com/5bed3c39110d4c1e971b25b2?width=1320" alt="Mark Zuckerberg">
+                    <div class="card-content">
+                        <h3>Mark Zuckerberg</h3>
+                        <p>CEO of Meta, the company behind Facebook, Instagram, and WhatsApp.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://wallpapercave.com/wp/wp6760529.jpg" alt="Satya Nadella">
+                    <div class="card-content">
+                        <h3>Satya Nadella</h3>
+                        <p>CEO of Microsoft, transforming the company into a cloud-first business.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://mx.web.img3.acsta.net/pictures/22/08/31/17/40/2573138.jpg" alt="Jeff Bezos">
+                    <div class="card-content">
+                        <h3>Jeff Bezos</h3>
+                        <p>Founder and former CEO of Amazon, revolutionizing e-commerce and cloud computing.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section for Company Information -->
+        <div class="section company-info">
+            <h2>About Companies</h2>
+            <div class="cards-container">
+                <div class="card">
+                    <img src="https://p.turbosquid.com/ts-thumb/rq/hDAYCm/Kn/ibm/jpg/1694514644/1920x1080/fit_q87/a8c272a5013a5d09b9cade0e54d5e21812ba55cd/ibm.jpg" alt="IBM Logo">
+                    <div class="card-content">
+                        <h3>IBM</h3>
+                        <p>IBM has been a pioneer in the IT industry for over 100 years. Focused on AI, cloud computing, and quantum technologies.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/845e3a94-74ab-4446-b4c5-e76586e3199f/d50ngh3-ee3f5aeb-1a65-4674-a03d-4b4808a3a3f7.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwic3ViIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsImF1ZCI6WyJ1cm46c2VydmljZTpmaWxlLmRvd25sb2FkIl0sIm9iaiI6W1t7InBhdGgiOiIvZi84NDVlM2E5NC03NGFiLTQ0NDYtYjRjNS1lNzY1ODZlMzE5OWYvZDUwbmdoMy1lZTNmNWFlYi0xYTY1LTQ2NzQtYTAzZC00YjQ4MDhhM2EzZjcuanBnIn1dXX0.rhZzmxyRynay7uZQzhJ3QOLWo5tp0zNwEHXGYj7zZK0" alt="Intel Logo">
+                    <div class="card-content">
+                        <h3>Intel</h3>
+                        <p>Intel leads the semiconductor industry, powering computers, mobile devices, and more.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://media.cgtrader.com/variants/tTFzzjfhKf1NgvKqCb5ULvR5/64d1262c1acde2eb3beef249c4695a8ad88c958dd79db36f763bf631017addd0/Oracle%2005.png" alt="Oracle Logo">
+                    <div class="card-content">
+                        <h3>Oracle</h3>
+                        <p>Oracle Corporation develops software and hardware systems for enterprises, including databases and cloud solutions.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="https://cdn.dribbble.com/users/8925243/screenshots/17661103/40_4x.png" alt="Google Logo">
+                    <div class="card-content">
+                        <h3>Meta</h3>
+                        <p>
+                        Meta is a technology company that owns social media platforms like Facebook, Instagram, and WhatsApp, and is pioneering advancements in virtual reality and the metaverse.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Programming LMS. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
